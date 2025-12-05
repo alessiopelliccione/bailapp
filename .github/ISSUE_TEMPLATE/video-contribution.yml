@@ -1,7 +1,7 @@
 name: 🎥 Add a Dance Video
 description: Suggest a new Salsa or Bachata video to add to the app
 title: 'Add a new [Salsa/Bachata] video: "[Video Title Here]"'
-labels: ['video-contribution', 'good first issue']
+labels: ['video contribution', 'good first issue']
 body:
   - type: markdown
     attributes:
