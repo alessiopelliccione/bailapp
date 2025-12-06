@@ -9,7 +9,16 @@ import { Input } from '@/components/ui/input';
 import movementListEN from '@/data/movementLists/movementListEN.json';
 import movementListES from '@/data/movementLists/movementListES.json';
 import movementListFR from '@/data/movementLists/movementListFR.json';
+import movementListIT from '@/data/movementLists/movementListIT.json';
 import { changeMovementColor } from '@/hooks/useMovementColor';
+
+// Map language codes to their corresponding movement lists
+const MOVEMENT_LISTS = {
+  en: movementListEN,
+  es: movementListES,
+  fr: movementListFR,
+  it: movementListIT,
+} as const;
 
 interface ChoreographyMovementItemProps {
   movement: ChoreographyMovement;
@@ -104,13 +113,8 @@ export function ChoreographyMovementItem({
       | 'Bachata';
 
     // Select the appropriate movement list based on user's language
-    const currentLanguage = i18n.language || 'en';
-    const movementList =
-      currentLanguage === 'fr'
-        ? movementListFR
-        : currentLanguage === 'es'
-          ? movementListES
-          : movementListEN;
+    const currentLanguage = (i18n.language || 'en') as keyof typeof MOVEMENT_LISTS;
+    const movementList = MOVEMENT_LISTS[currentLanguage] || MOVEMENT_LISTS.en;
 
     const movements = movementList[styleKey] || [];
 
