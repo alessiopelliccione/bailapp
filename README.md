@@ -131,6 +131,7 @@ The app supports three languages:
 - 🇬🇧 English (default)
 - 🇫🇷 French
 - 🇪🇸 Spanish
+- 🇮🇹 Italian
 
 Translation files are located in `apps/web/src/locales/`.
 
