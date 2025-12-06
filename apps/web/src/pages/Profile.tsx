@@ -96,6 +96,15 @@ export function Profile() {
                   <span className="flex-1 text-left">Español</span>
                   {i18n.language === 'es' && <span className="text-xs opacity-70">✓</span>}
                 </Button>
+                <Button
+                  variant={i18n.language === 'it' ? 'default' : 'outline'}
+                  onClick={() => changeLanguage('it')}
+                  className="mx-auto min-h-[48px] justify-start"
+                >
+                  <span className="mr-3 text-xl">🇮🇹</span>
+                  <span className="flex-1 text-left">Italiano</span>
+                  {i18n.language === 'it' && <span className="text-xs opacity-70">✓</span>}
+                </Button>
               </div>
             </CardContent>
           </Card>
