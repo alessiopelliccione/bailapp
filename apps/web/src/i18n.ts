@@ -5,12 +5,13 @@ import { getStorageKey, StorageKey } from './lib/storageKeys';
 import en from './locales/en.json';
 import es from './locales/es.json';
 import fr from './locales/fr.json';
+import it from './locales/it.json';
 
 const LANGUAGE_KEY = getStorageKey(StorageKey.LANGUAGE);
 
 // Get browser language synchronously (fallback)
 const getBrowserLanguageSync = (): string => {
-  const supportedLanguages = ['en', 'fr', 'es'];
+  const supportedLanguages = ['en', 'fr', 'es', 'it'];
 
   // Try to get user's preferred languages (ordered by preference)
   const userLanguages = navigator.languages || [
@@ -34,7 +35,7 @@ const getBrowserLanguageSync = (): string => {
 
 // Detect saved language asynchronously
 const getSavedLanguage = async (): Promise<string | null> => {
-  const supportedLanguages = ['en', 'fr', 'es'];
+  const supportedLanguages = ['en', 'fr', 'es', 'it'];
 
   try {
     const savedLanguage = await getItem(LANGUAGE_KEY);
@@ -56,6 +57,7 @@ i18n.use(initReactI18next).init({
     en: { translation: en },
     fr: { translation: fr },
     es: { translation: es },
+    it: { translation: it },
   },
   lng: initialLanguage,
   fallbackLng: 'en',

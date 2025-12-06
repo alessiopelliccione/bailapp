@@ -1,0 +1,411 @@
+{
+  "app": {
+    "name": "Bailapp",
+    "tagline": "Crea, Impara, Balla",
+    "slowConnectionTip": "Se hai una connessione lenta, puoi avviare l'app in modalità aereo per utilizzare i dati in cache"
+  },
+  "nav": {
+    "home": "Home",
+    "discover": "Scopri",
+    "favorites": "Preferiti",
+    "choreographies": "Coreografie",
+    "profile": "Profilo",
+    "signIn": "Accedi",
+    "signOut": "Esci"
+  },
+  "home": {
+    "welcome": "Benvenuto su Bailapp",
+    "subtitle": "Cosa c'è in programma oggi?",
+    "options": {
+      "discover": {
+        "title": "Scopri nuovi passi",
+        "description": "Esplora figure di salsa e bachata"
+      },
+      "favorites": {
+        "title": "Ripassa i tuoi preferiti",
+        "description": "Pratica i movimenti che ami"
+      },
+      "choreographies": {
+        "title": "Perfeziona le tue coreografie",
+        "description": "Crea e affina le tue sequenze"
+      }
+    }
+  },
+  "discover": {
+    "title": "Scopri",
+    "subtitle": "Esplora figure e passi di danza",
+    "categories": {
+      "salsa": {
+        "description": "Impara figure e combinazioni di Salsa"
+      },
+      "bachata": {
+        "description": "Impara passi e sequenze di Bachata"
+      }
+    },
+    "filter": {
+      "placeholder": "Filtra per stile",
+      "all": "Tutti gli stili"
+    },
+    "search": {
+      "placeholder": "Cerca un movimento..."
+    },
+    "results": {
+      "showing_zero": "Nessun risultato",
+      "showing_one": "{{count}} risultato trovato",
+      "showing_other": "{{count}} risultati trovati",
+      "clear": "Cancella filtri"
+    },
+    "advancedFilters": {
+      "button": "Altri filtri",
+      "title": "Filtri Avanzati",
+      "figureType": "Tipo di Movimento",
+      "selectFigureType": "Seleziona un tipo",
+      "allTypes": "Tutti i tipi",
+      "complexity": "Difficoltà",
+      "selectComplexity": "Seleziona difficoltà",
+      "allComplexities": "Tutte le difficoltà",
+      "videoLanguage": "Lingua Video",
+      "selectLanguage": "Seleziona lingua",
+      "allLanguages": "Tutte le lingue",
+      "videoFormat": "Formato Video",
+      "selectFormat": "Seleziona formato",
+      "allFormats": "Tutti i formati",
+      "danceSubStyle": "Sotto-Stile di Danza",
+      "selectSubStyle": "Seleziona sotto-stile",
+      "allSubStyles": "Tutti i sotto-stili",
+      "subStyleHint": "Seleziona uno stile principale per sbloccare questo filtro",
+      "activeFilters": "Filtri Attivi",
+      "reset": "Reimposta",
+      "apply": "Applica"
+    },
+    "empty": {
+      "title": "Nessuna figura ancora",
+      "description": "Sii il primo ad aggiungere una figura in questa categoria!",
+      "action": "Aggiungi Figura",
+      "filtered": {
+        "title": "Nessuna figura di questo stile ancora",
+        "description": "Sii il primo ad aggiungerla!"
+      }
+    },
+    "addFigure": "Aggiungi nuova figura"
+  },
+  "favorites": {
+    "title": "Preferiti",
+    "subtitle": "La tua collezione personale",
+    "subtitle_zero": "Nessun preferito ancora",
+    "subtitle_one": "{{count}} movimento preferito",
+    "subtitle_other": "{{count}} movimenti preferiti",
+    "empty": {
+      "title": "Nessun preferito ancora",
+      "description": "Inizia ad aggiungere movimenti ai tuoi preferiti per trovarli qui in seguito!",
+      "action": "Scopri movimenti"
+    }
+  },
+  "choreographies": {
+    "title": "Coreografie",
+    "subtitle": "Crea e gestisci le tue sequenze",
+    "new": "Nuova",
+    "myChoreographies": "Le Mie Coreografie",
+    "followed": "Seguite",
+    "empty": {
+      "title": "Nessuna coreografia ancora",
+      "description": "Crea la tua prima coreografia per combinare figure e praticare sequenze!",
+      "action": "Nuova Coreografia"
+    },
+    "newChoreography": {
+      "title": "Nuova Coreografia",
+      "name": "Nome",
+      "namePlaceholder": "Nome coreografia",
+      "validate": "Crea",
+      "errors": {
+        "nameRequired": "Il nome della coreografia è obbligatorio",
+        "danceStyleRequired": "Lo stile di danza è obbligatorio"
+      }
+    },
+    "edit": {
+      "title": "Modifica coreografia"
+    },
+    "detail": {
+      "notFound": "Coreografia non trovata",
+      "notFoundDescription": "Questa coreografia non esiste o non hai accesso ad essa. Accedi per visualizzare le coreografie condivise.",
+      "backToChoreographies": "Torna alle coreografie",
+      "edit": "Modifica",
+      "share": "Condividi",
+      "duplicate": "Duplica",
+      "delete": "Elimina",
+      "copyOf": "Copia di {{name}}",
+      "duplicateSuccess": "Coreografia duplicata con successo"
+    },
+    "share": {
+      "shareText": "Guarda questa coreografia {{style}} « {{name}} » su Bailapp:",
+      "shared": "Coreografia condivisa con successo",
+      "linkCopied": "Link copiato negli appunti",
+      "public": "Pubblica",
+      "private": "Privata",
+      "duplicateToMyChoreographies": "Duplica nelle mie coreografie",
+      "follow": "Segui",
+      "unfollow": "Smetti di seguire",
+      "following": "Seguendo",
+      "followSuccess": "Ora stai seguendo questa coreografia",
+      "unfollowSuccess": "Non stai più seguendo questa coreografia",
+      "ownedBy": "Di proprietà di {{name}}",
+      "myself": "Me stesso",
+      "info": "Informazioni coreografia condivisa",
+      "createdAt": "Creata il",
+      "sharingMode": {
+        "title": "Modalità di Condivisione",
+        "viewOnly": "Solo Visualizzazione",
+        "collaborative": "Collaborativa",
+        "private": "Privata",
+        "viewOnlyDescription": "Altri possono visualizzare ma non modificare",
+        "collaborativeDescription": "I follower possono modificare questa coreografia",
+        "privateDescription": "Visibile solo a te",
+        "updated": "Modalità di condivisione aggiornata"
+      },
+      "madePrivate": "La coreografia è ora privata",
+      "privateInfo": {
+        "title": "Questa coreografia è ora privata",
+        "description": "Il proprietario ha reso questa coreografia privata. Non è più visibile ai follower.",
+        "removeFromList": "Rimuovi dalla mia lista"
+      }
+    },
+    "delete": {
+      "title": "Elimina coreografia",
+      "message": "Sei sicuro di voler eliminare questa coreografia?",
+      "confirm": "Elimina",
+      "success": "Coreografia eliminata con successo"
+    },
+    "menu": {
+      "title": "Menu"
+    },
+    "movements": {
+      "add": "Aggiungi un movimento",
+      "namePlaceholder": "Nome movimento",
+      "menu": "Menu",
+      "duplicate": "Duplica",
+      "copy": "Copia",
+      "paste": "Incolla",
+      "copySuccess": "Movimento copiato",
+      "pasteSuccess": "Movimento incollato con successo",
+      "changeColor": "Cambia colore",
+      "delete": "Elimina",
+      "deleteTitle": "Elimina Movimento",
+      "deleteMessage": "Sei sicuro di voler eliminare questo movimento?",
+      "deleteConfirm": "Elimina",
+      "empty": {
+        "title": "Nessun movimento ancora",
+        "description": "Inizia a costruire la tua coreografia aggiungendo il tuo primo passo o figura di danza."
+      },
+      "mentionTitle": "Collega una Coreografia o Figura",
+      "mentionSearchPlaceholder": "Cerca...",
+      "mentionChoreographies": "Coreografie",
+      "mentionFavoriteFigures": "Figure Preferite",
+      "mentionOtherFigures": "Altre Figure",
+      "noMentionsFound": "Nessun risultato trovato",
+      "mentionHint": "Digita « @ » per collegare i tuoi preferiti e coreografie"
+    },
+    "example": {
+      "name": "Esempio Salsa",
+      "movements": {
+        "pasoBasico": "Passo base"
+      }
+    }
+  },
+  "profile": {
+    "title": "Profilo",
+    "signIn": "Accedi",
+    "signInRequired": "Accedi per visualizzare il tuo profilo",
+    "signInDescription": "Accedi alle tue preferenze e impostazioni",
+    "languagePreferences": "Preferenze Lingua",
+    "selectLanguage": "Scegli la tua lingua preferita",
+    "signOut": "Esci",
+    "signOutConfirm": {
+      "title": "Esci",
+      "message": "Sei sicuro di voler uscire?"
+    },
+    "about": {
+      "title": "Informazioni",
+      "version": "V{{version}}",
+      "developed": "Sviluppata con ❤️ da"
+    }
+  },
+  "figure": {
+    "notFound": "Figura non trovata",
+    "backToDiscover": "Torna a Scopri",
+    "addToFavorites": "Aggiungi ai Preferiti",
+    "removeFromFavorites": "Rimuovi dai Preferiti",
+    "fullTitle": "Titolo Completo",
+    "description": "Descrizione",
+    "showMore": "Mostra altro",
+    "showLess": "Mostra meno",
+    "videoAuthor": "Autore",
+    "videoLanguage": "Lingua",
+    "duration": "Durata",
+    "phrases": "{{count}} frase",
+    "phrases_one": "{{count}} frase",
+    "phrases_other": "{{count}} frasi",
+    "importedBy": "Importato da",
+    "visibility": "Visibilità",
+    "shareText": "Guarda questo movimento {{style}} « {{title}} » su Bailapp:",
+    "linkCopied": "Link copiato negli appunti",
+    "mastery": {
+      "title": "Padronanza del Movimento",
+      "enter": "Inserisci il mio livello di padronanza",
+      "updateTitle": "Livello di Padronanza"
+    }
+  },
+  "badges": {
+    "danceStyle": {
+      "salsa": "Salsa",
+      "bachata": "Bachata"
+    },
+    "figureType": {
+      "figure": "Figura",
+      "basicstep": "Passo Base",
+      "complexstep": "Passo Complesso",
+      "mix": "Mix"
+    },
+    "complexity": {
+      "basic": "Base",
+      "basicintermediate": "Base/Inter",
+      "basicIntermediate": "Base/Inter",
+      "intermediate": "Intermedio",
+      "intermediateadvanced": "Inter/Avanzato",
+      "intermediateAdvanced": "Inter/Avanzato",
+      "advanced": "Avanzato"
+    },
+    "videoLanguage": {
+      "french": "Francese",
+      "english": "Inglese",
+      "spanish": "Spagnolo",
+      "italian": "Italiano"
+    },
+    "videoFormat": {
+      "classic": "Classico",
+      "short": "Corto"
+    },
+    "visibility": {
+      "public": "Pubblico",
+      "private": "Privato",
+      "unlisted": "Non elencato"
+    },
+    "danceSubStyle": {
+      "cuban": "Cubana",
+      "lastyle": "Stile LA",
+      "nystyle": "Stile NY",
+      "puertorican": "Portoricana",
+      "colombian": "Colombiana",
+      "ruedadecasino": "Rueda de Casino",
+      "romantica": "Romantica",
+      "dominican": "Dominicana",
+      "modern": "Moderna",
+      "sensual": "Sensuale",
+      "urban": "Urbana",
+      "fusion": "Fusion",
+      "ballroom": "Da Sala"
+    }
+  },
+  "auth": {
+    "signIn": "Accedi",
+    "signInWithGoogle": "Accedi con Google",
+    "signInRequired": "Accedi",
+    "signInToSave": "Salva le tue preferenze e accedi ai tuoi dati personali.",
+    "signInToContinue": "Accedi per continuare"
+  },
+  "common": {
+    "error": "Si è verificato un errore",
+    "tryAgain": "Riprova",
+    "close": "Chiudi",
+    "back": "Indietro",
+    "cancel": "Annulla",
+    "save": "Salva",
+    "update": "Aggiorna",
+    "addNew": "Aggiungi Nuovo",
+    "addChoreography": "Aggiungi Coreografia",
+    "addFigure": "Aggiungi Figura",
+    "offline": {
+      "title": "Sei offline",
+      "message": "Alcune funzionalità potrebbero non funzionare correttamente.",
+      "verySlowConnection": {
+        "title": "Connessione lenta",
+        "message": "Alcune funzionalità potrebbero non funzionare correttamente."
+      },
+      "backOnline": "Connessione ripristinata!"
+    }
+  },
+  "modal": {
+    "newChoreographyTitle": "Nuova Coreografia",
+    "newChoreographyDescription": "Crea una nuova coreografia di danza combinando figure e passi",
+    "newFigureTitle": "Nuova Figura",
+    "newFigureDescription": "Aggiungi una nuova figura o passo di danza da YouTube",
+    "close": "Chiudi"
+  },
+  "newFigure": {
+    "title": "Aggiungi Nuova Figura",
+    "youtubeUrl": "URL YouTube",
+    "youtubeUrlPlaceholder": "https://www.youtube.com/watch?v=...",
+    "thumbnail": "Miniatura",
+    "figureTitle": "Titolo",
+    "titlePlaceholder": "Nome o descrizione della figura",
+    "description": "Descrizione (opzionale)",
+    "descriptionPlaceholder": "Dettagli aggiuntivi su questa figura...",
+    "videoAuthor": "Autore Video (opzionale)",
+    "videoAuthorPlaceholder": "Nome del canale o creatore",
+    "startTime": "Tempo Inizio (opzionale)",
+    "endTime": "Tempo Fine (opzionale)",
+    "timePlaceholder": "MM:SS o HH:MM:SS",
+    "danceStyle": "Stile di Danza",
+    "danceStylePlaceholder": "Seleziona stile di danza",
+    "danceSubStyle": "Sotto-Stile di Danza (opzionale)",
+    "danceSubStylePlaceholder": "Seleziona sotto-stile di danza",
+    "shortTitle": "Titolo Breve",
+    "shortTitlePlaceholder": "Nome breve della figura",
+    "fullTitle": "Titolo Completo",
+    "fullTitlePlaceholder": "Nome completo della figura",
+    "figureType": "Tipo di Movimento",
+    "figureTypePlaceholder": "Seleziona tipo di movimento",
+    "complexity": "Complessità (opzionale)",
+    "complexityPlaceholder": "Seleziona complessità",
+    "phrasesCount": "Numero di Frasi",
+    "phrasesCountPlaceholder": "4",
+    "videoLanguage": "Lingua Video",
+    "visibility": "Visibilità",
+    "visibilityPlaceholder": "Seleziona visibilità",
+    "addButton": "Aggiungi Figura",
+    "required": "*",
+    "errors": {
+      "youtubeUrlRequired": "L'URL YouTube è obbligatorio",
+      "titleRequired": "Il titolo è obbligatorio",
+      "danceStyleRequired": "Lo stile di danza è obbligatorio",
+      "figureTypeRequired": "Il tipo di movimento è obbligatorio",
+      "complexityRequired": "La complessità è obbligatoria",
+      "phrasesCountMin": "Il numero di frasi deve essere almeno 1"
+    }
+  },
+  "pwa": {
+    "update": {
+      "title": "Nuova versione disponibile",
+      "message": "Aggiornamento in corso...",
+      "close": "Chiudi"
+    },
+    "install": {
+      "title": "Installa Bailapp sul tuo dispositivo",
+      "instructions": {
+        "title": "Istruzioni per l'installazione",
+        "intro": "Cerca i pulsanti nel tuo browser, non nell'app.",
+        "android1": "Trova il pulsante menu: (<b>⋮</b>)",
+        "android2": "Poi « <b>Installa App</b> »,",
+        "android3": "oppure « <b>Aggiungi alla schermata Home</b> ».",
+        "ios1": "Trova il pulsante condividi:",
+        "ios2": "Poi « <b>Aggiungi alla schermata Home</b> ».",
+        "otherLabel": "Altri browser",
+        "other": "Cerca l'opzione « <b>Installa</b> » o « <b>Aggiungi alla schermata Home</b> » nel menu del browser.",
+        "close": "Chiudi"
+      }
+    }
+  },
+  "comingSoon": {
+    "title": "Prossimamente",
+    "description": "Ci stiamo lavorando! Presto potrai aggiungere le tue figure."
+  }
+}
