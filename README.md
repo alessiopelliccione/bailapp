@@ -4,6 +4,8 @@
 
 A modern PWA application for creating choreographies, learning new moves, and tracking your dance progress.
 
+### **Try it now**: [bailapp.web.app](https://bailapp.web.app/)
+
 ## Features
 
 - 📱 **Mobile-First** - Optimized for mobile with touch-friendly UI and bottom navigation
