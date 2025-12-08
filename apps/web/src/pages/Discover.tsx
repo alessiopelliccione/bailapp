@@ -311,7 +311,10 @@ export function Discover() {
 
         {/* Results Summary */}
         {hasActiveFilters && (
-          <ResultsSummary count={shuffledFigures.length} onClear={clearFilters} />
+          <ResultsSummary
+            count={shuffledFigures.length + filteredShorts.length}
+            onClear={clearFilters}
+          />
         )}
       </div>
 
