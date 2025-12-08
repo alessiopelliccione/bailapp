@@ -5,14 +5,10 @@ import App from './App.tsx';
 import './i18n';
 import './index.css';
 
-function Root() {
-  return <App />;
-}
-
 // Disable PostHog in development to avoid polluting analytics
 const isProduction = import.meta.env.PROD;
 
-const AppWithProviders = () => {
+export function AppWithProviders() {
   if (isProduction) {
     return (
       <PostHogProvider
@@ -24,14 +20,14 @@ const AppWithProviders = () => {
           debug: false,
         }}
       >
-        <Root />
+        <App />
       </PostHogProvider>
     );
   }
 
   // In development, return children without PostHog
-  return <Root />;
-};
+  return <App />;
+}
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

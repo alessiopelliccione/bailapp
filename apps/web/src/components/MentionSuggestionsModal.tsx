@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { Search, Music2, Heart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { Choreography, Figure, MentionType } from '@/types';
@@ -36,6 +37,18 @@ export function MentionSuggestionsModal({
   const { favorites } = useFavorites();
   const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Manage body overflow when modal is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [open]);
 
   // Sync searchQuery with prop when it changes
   useEffect(() => {
@@ -168,18 +181,19 @@ export function MentionSuggestionsModal({
 
   if (!open) return null;
 
-  return (
+  // Render modal in a portal to escape the Layout's stacking context
+  return createPortal(
     <>
-      {/* Overlay */}
-      <div className="fixed inset-0 z-[100] bg-black/50" onClick={onClose} />
+      {/* Overlay - positioned above navbar (z-50) */}
+      <div className="fixed inset-0 bg-black/50" onClick={onClose} style={{ zIndex: 55 }} />
 
-      {/* Modal */}
+      {/* Modal content - positioned above overlay */}
       <div
-        className="fixed inset-0 z-[101] flex items-start justify-center p-4 pt-8"
-        onClick={onClose}
+        className="pointer-events-none fixed inset-0 mb-[env(safe-area-inset-bottom)] ml-[env(safe-area-inset-left)] mr-[env(safe-area-inset-right)] mt-[env(safe-area-inset-top)] flex items-start justify-center p-4 pt-8"
+        style={{ zIndex: 60 }}
       >
         <div
-          className="flex max-h-[80vh] w-full max-w-md flex-col rounded-lg border bg-background shadow-lg"
+          className="pointer-events-auto flex max-h-[80vh] w-full max-w-md flex-col rounded-lg border bg-background shadow-lg"
           onKeyDown={handleKeyDown}
           onClick={(e) => e.stopPropagation()}
         >
@@ -252,6 +266,7 @@ export function MentionSuggestionsModal({
           </div>
         </div>
       </div>
-    </>
+    </>,
+    document.body
   );
 }

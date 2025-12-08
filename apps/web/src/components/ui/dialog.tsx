@@ -33,7 +33,7 @@ const Dialog = ({ open, onOpenChange, children }: DialogProps) => {
         style={{ zIndex: 55 }}
       />
       {/* Dialog content - positioned above overlay (z-55) */}
-      <div className="pointer-events-none fixed inset-0 z-[60] flex items-center justify-center">
+      <div className="pointer-events-none fixed inset-0 z-[60] mb-[env(safe-area-inset-bottom)] ml-[env(safe-area-inset-left)] mr-[env(safe-area-inset-right)] mt-[env(safe-area-inset-top)] flex items-center justify-center">
         <div className="pointer-events-auto relative">{children}</div>
       </div>
     </>,

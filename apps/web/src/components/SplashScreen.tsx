@@ -32,7 +32,7 @@ export function SplashScreen({ onFinish, shouldHide = false }: SplashScreenProps
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-primary transition-opacity duration-300 ${
+      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-primary pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] pt-[env(safe-area-inset-top)] transition-opacity duration-300 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >

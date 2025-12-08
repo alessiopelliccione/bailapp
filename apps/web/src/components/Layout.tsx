@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Home, Compass, Heart, Music, User } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { PullToRefreshIndicator } from '@/components/PullToRefreshIndicator';
 import { usePullToRefreshContext } from '@/context/PullToRefreshContext';
 import { useOrientation } from '@/hooks/useOrientation';
@@ -34,14 +34,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <div
-      className={`p-safe-area-horizontal flex h-screen flex-col overflow-hidden sm:border ${!isLandscapeMobile ? 'p-safe-area' : ''}`}
-    >
-      {/* Main Content - Mobile Optimized with Padding and Safe Area (72px is the height of the navbar) */}
+    // Mobile Optimized with Padding and Safe Area
+    <div className="flex h-full w-full flex-col overflow-hidden sm:border">
       <main
         ref={mainRef}
-        className={`relative flex flex-col overflow-y-auto px-4 py-5 ${
-          isLandscapeMobile ? 'h-[100dvh]' : 'h-[calc(100dvh-72px)]'
+        className={`fixed left-0 right-0 top-0 mb-[env(safe-area-inset-bottom)] flex flex-col overflow-y-auto pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] pt-[env(safe-area-inset-top)] ${
+          isLandscapeMobile ? 'bottom-0' : 'bottom-[72px]'
         }`}
       >
         <PullToRefreshIndicator
@@ -50,12 +48,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
           pullDistance={pullDistance}
           threshold={80}
         />
-        <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col">{children}</div>
+        <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 pb-5 pt-4">
+          {children}
+        </div>
       </main>
 
-      {/* Bottom Navigation - Mobile Only, Touch-Optimized */}
       <nav
-        className={`z-50 border-t bg-background/95 backdrop-blur ${isLandscapeMobile ? 'hidden' : ''}`}
+        className={`fixed bottom-0 left-0 right-0 z-50 border-t bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur ${
+          isLandscapeMobile ? 'hidden' : ''
+        }`}
       >
         <div className="mx-auto grid max-w-6xl grid-cols-5 gap-1 p-2">
           <Link
