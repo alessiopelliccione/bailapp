@@ -311,7 +311,7 @@ export const classicVideoList: Figure[] = [
     figureType: 'figure',
     complexity: 'basic-intermediate',
     phrasesCount: 2,
-    videoLanguage: 'italian',
+    videoLanguage: 'french',
     visibility: 'public',
     importedBy: 'Bailapp',
     createdAt: '2025-10-06T00:00:00.000Z',
