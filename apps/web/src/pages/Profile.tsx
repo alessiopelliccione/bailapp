@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAuth } from '@/context/AuthContext';
 
 // Get version from environment variable
-const APP_VERSION = import.meta.env.VITE_PUBLIC_APP_VERSION || '0.4.0';
+const APP_VERSION = import.meta.env.VITE_PUBLIC_APP_VERSION || '0.5.0';
 
 export function Profile() {
   const { t, i18n } = useTranslation();

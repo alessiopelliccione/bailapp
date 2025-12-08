@@ -27,7 +27,7 @@ function envPublicPlugin() {
 export default defineConfig(() => {
   // Read .env.public file manually from root directory
   const envPublicPath = path.resolve(__dirname, '../../.env.public');
-  let appVersion = '0.4.0';
+  let appVersion = '0.5.0';
 
   try {
     const envContent = fs.readFileSync(envPublicPath, 'utf-8');
