@@ -1,7 +1,6 @@
-import { useState, useMemo, useEffect, useRef } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 import { Plus } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
 import type { Figure } from '@/types';
 import { AdvancedFiltersModal } from '@/components/AdvancedFiltersModal';
 import { AuthModal } from '@/components/AuthModal';
@@ -33,7 +32,6 @@ export function Discover() {
   const { t } = useTranslation();
   const { figures, shorts, addFigure } = useFigures();
   const { user } = useAuth();
-  const location = useLocation();
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showNewFigureModal, setShowNewFigureModal] = useState(false);
   const [showComingSoonModal, setShowComingSoonModal] = useState(false);
@@ -42,10 +40,10 @@ export function Discover() {
     getStorageKey(StorageKey.DISCOVER_SHOW_IMAGES),
     true
   );
-  const [shuffleKey, setShuffleKey] = useState(0);
   // Store the order of figure IDs to maintain stable order when figures are updated
   const figureOrderRef = useRef<Map<string, number>>(new Map());
-  const previousFilteredIdsRef = useRef<string>('');
+  // Store the order of shorts IDs to maintain stable order when shorts are updated
+  const shortsOrderRef = useRef<Map<string, number>>(new Map());
 
   // Check screen size for responsive carousel positioning
   const [screenSize, setScreenSize] = useState<'mobile' | 'sm' | 'md' | 'lg'>(() => {
@@ -105,36 +103,30 @@ export function Discover() {
     );
   }, [filteredFiguresWithShorts, shorts, searchQuery, showImages]);
 
-  // Shuffle figures when arriving on the page or when filters change (only if no filters are active)
-  useEffect(() => {
-    if (!hasActiveFilters) {
-      setShuffleKey(Date.now());
-    }
-  }, [location.pathname, hasActiveFilters]);
-
-  // Maintain stable order of figures - only reshuffle when filters change or on initial load
+  // Maintain stable random order of figures - shuffle once and maintain that order through filters
   const shuffledFigures = useMemo(() => {
-    const currentFilteredIds = filteredFigures.map((f) => f.id).join(',');
-    const filtersChanged = currentFilteredIds !== previousFilteredIdsRef.current;
-
-    if (hasActiveFilters) {
-      // Don't shuffle when filters are active - keep consistent results
-      previousFilteredIdsRef.current = currentFilteredIds;
-      return filteredFigures;
-    }
-
-    // Only reshuffle if filters changed or it's a new page load
-    if (filtersChanged || figureOrderRef.current.size === 0) {
-      const shuffled = shuffleArray(filteredFigures);
+    // Only reshuffle if it's a new page load (figureOrderRef is empty)
+    if (figureOrderRef.current.size === 0) {
+      // Get all figures (not just filtered ones) to establish initial order
+      const allFigures = [...figures, ...shorts];
+      const shuffled = shuffleArray(allFigures);
       // Store the order by ID
       shuffled.forEach((figure, index) => {
         figureOrderRef.current.set(figure.id, index);
       });
-      previousFilteredIdsRef.current = currentFilteredIds;
-      return shuffled;
     }
 
-    // Maintain the existing order even if figures are updated
+    // Only reshuffle shorts if it's a new page load (shortsOrderRef is empty)
+    if (shortsOrderRef.current.size === 0) {
+      // Get all shorts to establish initial order
+      const shuffledShorts = shuffleArray([...shorts]);
+      // Store the order by ID
+      shuffledShorts.forEach((short, index) => {
+        shortsOrderRef.current.set(short.id, index);
+      });
+    }
+
+    // Apply the stored random order to filtered figures
     const orderedFigures = [...filteredFigures].sort((a, b) => {
       const orderA = figureOrderRef.current.get(a.id) ?? Infinity;
       const orderB = figureOrderRef.current.get(b.id) ?? Infinity;
@@ -144,24 +136,7 @@ export function Discover() {
     // Add any new figures that weren't in the original order at the end
     const newFigures = filteredFigures.filter((f) => !figureOrderRef.current.has(f.id));
     return [...orderedFigures, ...newFigures];
-  }, [filteredFigures, hasActiveFilters, shuffleKey]);
-
-  // Helper function to shuffle array with a seed for deterministic but different results
-  const shuffleArrayWithSeed = <T,>(array: T[], seed: number): T[] => {
-    const shuffled = [...array];
-    // Use seed to initialize a pseudo-random generator
-    let randomSeed = seed;
-    const seededRandom = () => {
-      randomSeed = (randomSeed * 9301 + 49297) % 233280;
-      return randomSeed / 233280;
-    };
-
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(seededRandom() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-  };
+  }, [filteredFigures, figures, shorts]);
 
   // Filter shorts with the same filters as figures
   const filteredShorts = useMemo(() => {
@@ -216,15 +191,19 @@ export function Discover() {
   const distributedShortsBySection = useMemo(() => {
     if (!filteredShorts.length) return [];
 
-    // Shuffle all shorts once with the shuffleKey
-    const shuffledShorts = shuffleArrayWithSeed(filteredShorts, shuffleKey);
+    // Apply the stored random order to filtered shorts
+    const orderedShorts = [...filteredShorts].sort((a, b) => {
+      const orderA = shortsOrderRef.current.get(a.id) ?? Infinity;
+      const orderB = shortsOrderRef.current.get(b.id) ?? Infinity;
+      return orderA - orderB;
+    });
 
     const SHORTS_PER_SECTION = 3;
     const sections: Figure[][] = [];
 
     // Distribute shorts into sections of 3
-    for (let i = 0; i < shuffledShorts.length; i += SHORTS_PER_SECTION) {
-      const section = shuffledShorts.slice(i, i + SHORTS_PER_SECTION);
+    for (let i = 0; i < orderedShorts.length; i += SHORTS_PER_SECTION) {
+      const section = orderedShorts.slice(i, i + SHORTS_PER_SECTION);
       sections.push(section);
     }
 
@@ -246,17 +225,21 @@ export function Discover() {
     } else {
       return sections.filter((section) => section.length >= SHORTS_PER_SECTION);
     }
-  }, [filteredShorts, shuffleKey, hasActiveFilters]);
+  }, [filteredShorts, hasActiveFilters]);
 
   // Shuffle shorts for desktop display
   const shuffledFilteredShorts = useMemo(() => {
-    if (hasActiveFilters) {
-      // Don't shuffle when filters are active - keep consistent results
-      return filteredShorts;
-    }
-    // Shuffle with the same key as figures for consistency
-    return shuffleArrayWithSeed(filteredShorts, shuffleKey);
-  }, [filteredShorts, shuffleKey, hasActiveFilters]);
+    // Apply the stored random order to filtered shorts
+    const orderedShorts = [...filteredShorts].sort((a, b) => {
+      const orderA = shortsOrderRef.current.get(a.id) ?? Infinity;
+      const orderB = shortsOrderRef.current.get(b.id) ?? Infinity;
+      return orderA - orderB;
+    });
+
+    // Add any new shorts that weren't in the original order at the end
+    const newShorts = filteredShorts.filter((s) => !shortsOrderRef.current.has(s.id));
+    return [...orderedShorts, ...newShorts];
+  }, [filteredShorts]);
 
   // Helper function to get shorts for a specific section
   const getShortsForSection = (sectionIndex: number): Figure[] => {
