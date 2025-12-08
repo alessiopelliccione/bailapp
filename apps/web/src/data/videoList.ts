@@ -20,7 +20,7 @@ export const classicVideoList: Figure[] = [
     videoLanguage: 'french',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-01T00:00:00.000Z',
   },
   {
     id: 'watch_MNSpsPHR47I',
@@ -41,7 +41,7 @@ export const classicVideoList: Figure[] = [
     videoLanguage: 'spanish',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-02T00:00:00.000Z',
   },
   {
     id: 'watch_A8MCYkUZRXk',
@@ -62,7 +62,7 @@ export const classicVideoList: Figure[] = [
     videoLanguage: 'french',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-03T00:00:00.000Z',
   },
   {
     id: 'watch_tzS43I5N1u0',
@@ -83,7 +83,7 @@ export const classicVideoList: Figure[] = [
     videoLanguage: 'french',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-04T00:00:00.000Z',
   },
   {
     id: 'watch_6yV0luuLZdw_1',
@@ -104,7 +104,7 @@ export const classicVideoList: Figure[] = [
     videoLanguage: 'english',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-05T00:01:00.000Z',
   },
   {
     id: 'watch_6yV0luuLZdw_2',
@@ -125,7 +125,7 @@ export const classicVideoList: Figure[] = [
     videoLanguage: 'english',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-05T00:02:00.000Z',
   },
   {
     id: 'watch_6yV0luuLZdw_3',
@@ -146,7 +146,7 @@ export const classicVideoList: Figure[] = [
     videoLanguage: 'english',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-05T00:03:00.000Z',
   },
   {
     id: 'watch_6yV0luuLZdw_4',
@@ -167,7 +167,7 @@ export const classicVideoList: Figure[] = [
     videoLanguage: 'english',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-05T00:04:00.000Z',
   },
   {
     id: 'watch_6yV0luuLZdw_5',
@@ -188,7 +188,7 @@ export const classicVideoList: Figure[] = [
     videoLanguage: 'english',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-05T00:05:00.000Z',
   },
   {
     id: 'watch_6yV0luuLZdw_6',
@@ -209,7 +209,7 @@ export const classicVideoList: Figure[] = [
     videoLanguage: 'english',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-05T00:06:00.000Z',
   },
   {
     id: 'watch_6yV0luuLZdw_7',
@@ -230,7 +230,7 @@ export const classicVideoList: Figure[] = [
     videoLanguage: 'english',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-05T00:07:00.000Z',
   },
   {
     id: 'watch_6yV0luuLZdw_8',
@@ -251,7 +251,7 @@ export const classicVideoList: Figure[] = [
     videoLanguage: 'english',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-05T00:08:00.000Z',
   },
   {
     id: 'watch_6yV0luuLZdw_9',
@@ -272,7 +272,7 @@ export const classicVideoList: Figure[] = [
     videoLanguage: 'english',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-05T00:09:00.000Z',
   },
   {
     id: 'watch_6yV0luuLZdw_10',
@@ -293,7 +293,7 @@ export const classicVideoList: Figure[] = [
     videoLanguage: 'english',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-05T00:10:00.000Z',
   },
   {
     id: 'watch_AqnNTeRs2Pw',
@@ -314,7 +314,7 @@ export const classicVideoList: Figure[] = [
     videoLanguage: 'italian',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-06T00:00:00.000Z',
   },
 ];
 
@@ -337,7 +337,7 @@ export const shortVideoList: Figure[] = [
     videoLanguage: 'spanish',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-07T00:00:00.000Z',
   },
   {
     id: 'short_1LiDbfyexRw',
@@ -358,7 +358,7 @@ export const shortVideoList: Figure[] = [
     videoLanguage: 'english',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-08T00:00:00.000Z',
   },
   {
     id: 'short_wvuDlfJ-2Mo',
@@ -378,7 +378,7 @@ export const shortVideoList: Figure[] = [
     videoLanguage: 'spanish',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-09T00:00:00.000Z',
   },
   {
     id: 'short_xkgC6AnXMmU',
@@ -398,7 +398,7 @@ export const shortVideoList: Figure[] = [
     videoLanguage: 'spanish',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-10T00:00:00.000Z',
   },
   {
     id: 'short_weS43AcE9ps',
@@ -418,7 +418,7 @@ export const shortVideoList: Figure[] = [
     videoLanguage: 'spanish',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-11T00:00:00.000Z',
   },
   {
     id: 'short_BvHJZBSOIEE',
@@ -438,7 +438,7 @@ export const shortVideoList: Figure[] = [
     videoLanguage: 'spanish',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-12T00:00:00.000Z',
   },
   {
     id: 'short_zcRY4ObsKXo',
@@ -458,7 +458,7 @@ export const shortVideoList: Figure[] = [
     videoLanguage: 'spanish',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-13T00:00:00.000Z',
   },
   {
     id: 'short_8X-QHmHRaPE',
@@ -479,7 +479,7 @@ export const shortVideoList: Figure[] = [
     videoLanguage: 'english',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-14T00:00:00.000Z',
   },
   {
     id: 'short_k30rc2Ppfl4',
@@ -499,6 +499,6 @@ export const shortVideoList: Figure[] = [
     videoLanguage: 'spanish',
     visibility: 'public',
     importedBy: 'Bailapp',
-    createdAt: new Date().toISOString(),
+    createdAt: '2025-10-15T00:00:00.000Z',
   },
 ];
