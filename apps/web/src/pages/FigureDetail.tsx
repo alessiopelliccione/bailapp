@@ -89,6 +89,8 @@ export function FigureDetail() {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const playerRef = useRef<YTPlayer | null>(null);
   const hasPassedEndTimeRef = useRef<boolean>(false);
+  const descriptionRef = useRef<HTMLParagraphElement | null>(null);
+  const [isDescriptionLong, setIsDescriptionLong] = useState(false);
 
   // Update lastOpenedAt when figure is opened (only once per id, and only if favorited)
   useEffect(() => {
@@ -98,6 +100,49 @@ export function FigureDetail() {
       lastUpdatedIdRef.current = id;
     }
   }, [id, figure, isFavorite, updateLastOpened]);
+
+  // Measure description height to determine if it exceeds 3 lines
+  useEffect(() => {
+    const measureDescription = () => {
+      if (descriptionRef.current && figure?.description && !showFullDescription) {
+        const element = descriptionRef.current;
+        // Temporarily remove line-clamp to measure full height
+        const hasLineClamp = element.classList.contains('line-clamp-3');
+
+        if (hasLineClamp) {
+          element.classList.remove('line-clamp-3');
+          // Force reflow to get accurate measurements
+          void element.offsetHeight;
+        }
+
+        const fullHeight = element.scrollHeight;
+
+        // Re-apply line-clamp if it was there
+        if (hasLineClamp) {
+          element.classList.add('line-clamp-3');
+          void element.offsetHeight;
+        }
+
+        const clampedHeight = element.clientHeight;
+
+        // If full height is greater than clamped height, text is truncated
+        setIsDescriptionLong(fullHeight > clampedHeight);
+      } else {
+        setIsDescriptionLong(false);
+      }
+    };
+
+    // Measure after initial render
+    const timeoutId = setTimeout(measureDescription, 0);
+
+    // Re-measure on window resize
+    window.addEventListener('resize', measureDescription);
+
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('resize', measureDescription);
+    };
+  }, [figure?.description, showFullDescription]);
 
   // Update landscape state based on orientation and fullscreen exit status
   useEffect(() => {
@@ -294,9 +339,6 @@ export function FigureDetail() {
     }
   };
 
-  // Check if description is long (> 3 lines, ~150 chars)
-  const isDescriptionLong = (figure.description?.length || 0) > 150;
-
   // Get mastery level color based on percentage
   const getMasteryColor = (level: number): string => {
     if (level <= 30) {
@@ -454,6 +496,7 @@ export function FigureDetail() {
                 </h1>
                 <h2 className="pt-1 font-semibold">{t('figure.description')}</h2>
                 <p
+                  ref={descriptionRef}
                   className={`text-sm leading-relaxed text-muted-foreground ${!showFullDescription ? 'line-clamp-3' : ''}`}
                 >
                   {figure.description}
