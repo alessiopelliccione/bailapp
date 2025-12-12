@@ -66,7 +66,7 @@ export function Home() {
         </div>
 
         {/* Options Grid */}
-        <div className="mx-auto flex w-full max-w-lg flex-1 flex-col items-center gap-6 py-4 lg:grid lg:max-w-4xl lg:grid-cols-3 lg:grid-rows-1 lg:items-start">
+        <div className="mx-auto flex w-full max-w-lg flex-1 flex-col items-center gap-6 py-4 lg:grid lg:max-w-5xl lg:grid-cols-3 lg:grid-rows-1 lg:items-start">
           {options.map((option, index) => (
             <Link
               key={option.link}
