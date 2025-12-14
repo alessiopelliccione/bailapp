@@ -74,7 +74,7 @@
       "selectSubStyle": "Sélectionner un sous-style",
       "allSubStyles": "Tous les sous-styles",
       "subStyleHint": "Sélectionnez un style principal pour débloquer ce filtre",
-      "sortByDate": "Trier par date (plus récentes en premier)",
+      "sortByDate": "Trier par date (récente)",
       "activeFilters": "Filtres actifs",
       "reset": "Réinitialiser",
       "apply": "Appliquer"
