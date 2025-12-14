@@ -61,7 +61,7 @@ export function useFigureFilters(figures: Figure[]) {
   const hasActiveFilters =
     searchQuery.trim() ||
     selectedStyle !== 'all' ||
-    Object.values(advancedFilters).some((value) => value !== undefined);
+    Object.values(advancedFilters).some((value) => value !== undefined && value !== false);
 
   const clearFilters = () => {
     setSearchQuery('');

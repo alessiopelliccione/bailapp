@@ -4,6 +4,7 @@ import type { FigureType, Complexity, VideoLanguage, DanceSubStyle, VideoFormat 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Label } from '@/components/ui/label';
 import {
   Select,
   SelectContent,
@@ -11,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Switch } from '@/components/ui/switch';
 
 export interface AdvancedFilters {
   figureType?: FigureType;
@@ -19,6 +21,7 @@ export interface AdvancedFilters {
   videoFormat?: VideoFormat;
   danceSubStyle?: DanceSubStyle;
   danceStyle?: 'salsa' | 'bachata';
+  sortByDate?: boolean;
 }
 
 interface AdvancedFiltersModalProps {
@@ -49,11 +52,20 @@ export function AdvancedFiltersModal({
     });
   };
 
+  const handleSwitchChange = (key: keyof AdvancedFilters, checked: boolean) => {
+    onFiltersChange({
+      ...filters,
+      [key]: checked || undefined,
+    });
+  };
+
   const handleReset = () => {
     onFiltersChange({});
   };
 
-  const hasActiveFilters = Object.values(filters).some((value) => value !== undefined);
+  const hasActiveFilters = Object.values(filters).some(
+    (value) => value !== undefined && value !== false
+  );
 
   const figureTypes: FigureType[] = ['figure', 'basic-step', 'complex-step', 'mix'];
   const complexities: Complexity[] = [
@@ -221,6 +233,18 @@ export function AdvancedFiltersModal({
             )}
           </div>
 
+          {/* Sort By Date Filter */}
+          <div className="flex items-center gap-3 py-2">
+            <Switch
+              id="sortByDate"
+              checked={filters.sortByDate || false}
+              onCheckedChange={(checked) => handleSwitchChange('sortByDate', checked)}
+            />
+            <Label htmlFor="sortByDate" className="cursor-pointer text-sm font-medium leading-none">
+              {t('discover.advancedFilters.sortByDate')}
+            </Label>
+          </div>
+
           {/* Active Filters Summary */}
           {hasActiveFilters && (
             <div className="space-y-2">
@@ -257,6 +281,11 @@ export function AdvancedFiltersModal({
                     {t(`badges.danceSubStyle.${filters.danceSubStyle.replace(/-/g, '')}`)}
                   </Badge>
                 )}
+                {filters.sortByDate && (
+                  <Badge variant="secondary" className="text-xs">
+                    {t('discover.advancedFilters.sortByDate')}
+                  </Badge>
+                )}
               </div>
             </div>
           )}
@@ -268,7 +297,7 @@ export function AdvancedFiltersModal({
             variant="outline"
             onClick={handleReset}
             disabled={!hasActiveFilters}
-            className="flex items-center gap-2"
+            className="flex flex-1 items-center gap-2"
           >
             <RotateCcw className="h-4 w-4" />
             {t('discover.advancedFilters.reset')}

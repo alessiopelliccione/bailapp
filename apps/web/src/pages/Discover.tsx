@@ -105,6 +105,15 @@ export function Discover() {
 
   // Maintain stable random order of figures - shuffle once and maintain that order through filters
   const shuffledFigures = useMemo(() => {
+    // If sortByDate is enabled, sort by date (newest first)
+    if (advancedFilters.sortByDate) {
+      return [...filteredFigures].sort((a, b) => {
+        const dateA = new Date(a.createdAt).getTime();
+        const dateB = new Date(b.createdAt).getTime();
+        return dateB - dateA; // Newest first
+      });
+    }
+
     // Only reshuffle if it's a new page load (figureOrderRef is empty)
     if (figureOrderRef.current.size === 0) {
       // Get all figures (not just filtered ones) to establish initial order
@@ -136,7 +145,7 @@ export function Discover() {
     // Add any new figures that weren't in the original order at the end
     const newFigures = filteredFigures.filter((f) => !figureOrderRef.current.has(f.id));
     return [...orderedFigures, ...newFigures];
-  }, [filteredFigures, figures, shorts]);
+  }, [filteredFigures, figures, shorts, advancedFilters.sortByDate]);
 
   // Filter shorts with the same filters as figures
   const filteredShorts = useMemo(() => {
@@ -191,12 +200,22 @@ export function Discover() {
   const distributedShortsBySection = useMemo(() => {
     if (!filteredShorts.length) return [];
 
-    // Apply the stored random order to filtered shorts
-    const orderedShorts = [...filteredShorts].sort((a, b) => {
-      const orderA = shortsOrderRef.current.get(a.id) ?? Infinity;
-      const orderB = shortsOrderRef.current.get(b.id) ?? Infinity;
-      return orderA - orderB;
-    });
+    // If sortByDate is enabled, sort by date (newest first)
+    let orderedShorts: Figure[];
+    if (advancedFilters.sortByDate) {
+      orderedShorts = [...filteredShorts].sort((a, b) => {
+        const dateA = new Date(a.createdAt).getTime();
+        const dateB = new Date(b.createdAt).getTime();
+        return dateB - dateA; // Newest first
+      });
+    } else {
+      // Apply the stored random order to filtered shorts
+      orderedShorts = [...filteredShorts].sort((a, b) => {
+        const orderA = shortsOrderRef.current.get(a.id) ?? Infinity;
+        const orderB = shortsOrderRef.current.get(b.id) ?? Infinity;
+        return orderA - orderB;
+      });
+    }
 
     const SHORTS_PER_SECTION = 4;
     const sections: Figure[][] = [];
@@ -219,10 +238,19 @@ export function Discover() {
     }
 
     return sections;
-  }, [filteredShorts]);
+  }, [filteredShorts, advancedFilters.sortByDate]);
 
   // Shuffle shorts for desktop display
   const shuffledFilteredShorts = useMemo(() => {
+    // If sortByDate is enabled, sort by date (newest first)
+    if (advancedFilters.sortByDate) {
+      return [...filteredShorts].sort((a, b) => {
+        const dateA = new Date(a.createdAt).getTime();
+        const dateB = new Date(b.createdAt).getTime();
+        return dateB - dateA; // Newest first
+      });
+    }
+
     // Apply the stored random order to filtered shorts
     const orderedShorts = [...filteredShorts].sort((a, b) => {
       const orderA = shortsOrderRef.current.get(a.id) ?? Infinity;
@@ -233,7 +261,7 @@ export function Discover() {
     // Add any new shorts that weren't in the original order at the end
     const newShorts = filteredShorts.filter((s) => !shortsOrderRef.current.has(s.id));
     return [...orderedShorts, ...newShorts];
-  }, [filteredShorts]);
+  }, [filteredShorts, advancedFilters.sortByDate]);
 
   // Helper function to get shorts for a specific section
   const getShortsForSection = (sectionIndex: number): Figure[] => {
